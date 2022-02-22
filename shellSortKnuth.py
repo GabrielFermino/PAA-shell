@@ -1,25 +1,29 @@
 import time
 
-def shellSort(array):
+def shellSortWithKnuth(array):
     size = len(array)
-    interval = size // 2
+    interval = 1
+
+    while interval < size / 3:
+        interval = interval * 3 + 1
 
     while interval > 0:
         for i in range(interval, size):
             temp = array[i]
             j = i
-            while j >= interval and array[j - interval] > temp:
+
+            while j > interval - 1 and array[j - interval] >= temp:
                 array[j] = array[j - interval]
-                j -= interval
+                j = j - interval
 
             array[j] = temp
-        interval //= 2
+        interval = (interval-1)//3
 
 with open("./Aleatórios/a500000.txt", 'r') as f:
     array = f.readlines()
 
 start = time.time()
-shellSort(array)
+shellSortWithKnuth(array)
 end = time.time()
 
 print("Valores aleatorios (Shell Sort)")
