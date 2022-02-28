@@ -1,4 +1,4 @@
-import time
+import utils
 
 def shellSort(array):
     size = len(array)
@@ -15,12 +15,20 @@ def shellSort(array):
             array[j] = temp
         interval //= 2
 
-with open("./Aleatórios/a500000.txt", 'r') as f:
-    array = f.readlines()
+print("Shell Sort:")
+print(" ")
 
-start = time.time()
-shellSort(array)
-end = time.time()
+print("Valores aleatorios:")
+utils.getTime(shellSort, "./Aleatórios/a1000.txt")
+print("-----------------")
 
-print("Valores aleatorios (Shell Sort)")
-print("Execution time: ", end - start)
+print("Valores decrescentes:")
+utils.getTime(shellSort, "./Decrescentes/d1000.txt")
+print("-----------------")
+
+print("Valores crescentes:")
+utils.getTime(shellSort, "./Ordenados/o1000.txt")
+print("-----------------")
+
+print("Valores parcialmente ordenados:")
+utils.getTime(shellSort, "./ParcialmenteOrdenados/po1000.txt")

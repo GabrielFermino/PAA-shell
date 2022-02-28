@@ -1,4 +1,4 @@
-import time
+import utils
 
 def shellSortWithKnuth(array):
     size = len(array)
@@ -19,12 +19,20 @@ def shellSortWithKnuth(array):
             array[j] = temp
         interval = (interval-1)//3
 
-with open("./Aleatórios/a500000.txt", 'r') as f:
-    array = f.readlines()
+print("Shell Sort Knuth:")
+print(" ")
 
-start = time.time()
-shellSortWithKnuth(array)
-end = time.time()
+print("Valores aleatorios:")
+utils.getTime(shellSortWithKnuth, "./Aleatórios/a1000.txt")
+print("-----------------")
 
-print("Valores aleatorios (Shell Sort)")
-print("Execution time: ", end - start)
+print("Valores decrescentes:")
+utils.getTime(shellSortWithKnuth, "./Decrescentes/d1000.txt")
+print("-----------------")
+
+print("Valores crescentes:")
+utils.getTime(shellSortWithKnuth, "./Ordenados/o1000.txt")
+print("-----------------")
+
+print("Valores parcialmente ordenados:")
+utils.getTime(shellSortWithKnuth, "./ParcialmenteOrdenados/po1000.txt")
